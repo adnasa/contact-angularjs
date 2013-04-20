@@ -9,21 +9,20 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="row"> Add a contact! </h1>
+      <h1> Add a contact! </h1>
       <div class="row">
         <div ng-controller="Contacts" ng-init="reloadContacts()">
           <div class="span8">
-            <div class="row" ng-repeat="contact in contacts">
-              <h3>{{ contact.name }}</h3>
-              <p> {{ contact.number }} </p>
-              <button class="btn" ng-click="editSubmit(contact.weight)"><i class="icon-pencil"></i> Edit</button>
+            <div class="contact-badge" ng-repeat="contact in contacts">
+              <h3 contenteditable>{{ contact.name }}</h3>
+              <p contenteditable> {{ contact.number }} </p>
             </div> 
           </div>
           <div class="span4">
             <form ng-submit="saveContact(editContactWeight)">
-              <p><input required placeholder="Name" type="text" ng-bind="editContact.name" ng-model="editContactName"/></p>
-              <p><input required placeholder="Number" type="text" ng-bind="editContact.number" ng-model="editContactNumber"/></p>
-              <p><input type="submit" class="btn primary-btn"/></p>
+              <p><input required placeholder="Name" type="text" ng-model="editContactName"/></p>
+              <p><input required placeholder="Number" type="text" ng-model="editContactNumber"/></p>
+              <p><input value="Add" type="submit" class="btn primary-btn"/></p>
             </form>
           </div>
         </div>

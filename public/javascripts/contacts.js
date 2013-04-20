@@ -13,13 +13,18 @@ function Contacts($scope) {
       $scope.contacts[i].weight = i;
     };
   }
-  $scope.editContact = [];
+
+  /**
+   * Old code */
   $scope.editSubmit = function(arg) {
     $scope.editContactName = $scope.contacts[arg].name;
     $scope.editContactNumber = $scope.contacts[arg].number;
     $scope.editContactWeight = arg;
   }
   
+  /**
+   * Saving a contact 
+   */
   $scope.saveContact = function(weight) {
     try {
       $scope.contacts[weight].name = this.editContactName;
