@@ -13,7 +13,7 @@ This is more of a study for me to learn AngularJS for now.
 * I will try to tag often whenever I learn something new from AngularJS and it is implemented.
   * If not in the master: At least I will have it available in a separate branch.
 
-## Functionality
+# Functionality
 
 * Adding a new contact
 * Editing contact ( via "contenteditable" attribute )
