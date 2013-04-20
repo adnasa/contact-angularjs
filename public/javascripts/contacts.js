@@ -23,6 +23,7 @@ function Contacts($scope) {
   $scope.saveContact = function(weight) {
     try {
       $scope.contacts[weight].name = this.editContactName;
+      $scope.contacts[weight].number = this.editContactNumber;
     }
     catch(e) {
       if (!weight) {
@@ -34,6 +35,7 @@ function Contacts($scope) {
     }
     $scope.reloadContacts();
     this.editContactName = '';
+    this.editContactNumber = '';
     this.editContactWeight = null;
   }
 
