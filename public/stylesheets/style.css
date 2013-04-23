@@ -1,0 +1,16 @@
+.contact-badge {
+  border: 1px #ddd solid;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.contact-badge h3 {
+  padding: 3px;
+}
+.contact-badge h3:hover {
+  color: #62c462;
+}
+.contact-badge h3:focus {
+  color: #fff;
+  background: #faa732;
+  outline: none;
+}
