@@ -1,0 +1,27 @@
+doctype 5
+html(ng-app lang="en")
+  head
+    title NYAAAAAM!!
+    // Stylesheets. Add that bootstrap, baby!
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/stylesheets/bootstrap/css/bootstrap.css")
+  body
+    div.container
+      h1 Add a contact!
+      div.row
+        di(ng-controller="Contacts", ng-init="reloadContacts()")
+          div.span8
+            div.contact-badge(ng-repeat="contact in contacts")
+              h3(contenteditable) {{ contact.name }}
+              p(contenteditable) {{ contact.number }}
+          div.span4
+            form(ng-submit="saveContact(editContactWeight)")
+              p
+                input(type="text", placeholder="Name", required, ng-model="editContactName")
+              p
+                input(type="text", placeholder="Name", required, ng-model="editContactNumber")
+              p
+                input.btn.primary-btn(type="submit", value="Add")
+    
+    script(src="/javascripts/angular.js")
+    script(src="/javascripts/contacts.js")
