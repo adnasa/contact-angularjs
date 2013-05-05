@@ -1,7 +1,15 @@
+/**
+ * @file Contacts
+ * Add and edit contacts
+ */
 
-
+// Define our app
+// No dependencies for now.
 var app = angular.module('contactApp', []);
 
+/**
+ * ContactsController
+ */
 app.controller('Contacts', ['$scope', function($scope) {
   $scope.contacts = [
     {
@@ -16,17 +24,6 @@ app.controller('Contacts', ['$scope', function($scope) {
     };
   }
 
-  /**
-   * Old code */
-  $scope.editSubmit = function(arg) {
-    $scope.editContactName = $scope.contacts[arg].name;
-    $scope.editContactNumber = $scope.contacts[arg].number;
-    $scope.editContactWeight = arg;
-  }
-  
-  /**
-   * Saving a contact 
-   */
   $scope.saveContact = function(weight) {
     try {
       $scope.contacts[weight].name = this.editContactName;
