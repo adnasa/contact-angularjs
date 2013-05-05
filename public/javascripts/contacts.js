@@ -26,16 +26,16 @@ app.controller('Contacts', ['$scope', function($scope) {
 
   $scope.saveContact = function(weight) {
     try {
-      $scope.contacts[weight].name = this.editContactName;
-      $scope.contacts[weight].number = this.editContactNumber;
-    }
-    catch(e) {
       if (!weight) {
         $scope.contacts.push({
           name: this.editContactName,
           number : this.editContactNumber
         });
       }
+    }
+    catch(e) {
+      // Just log this baby
+      console.dir('Saving errorException:', [e]);
     }
     $scope.reloadContacts();
     this.editContactName = '';
