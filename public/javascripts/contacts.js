@@ -1,6 +1,8 @@
 
-function Contacts($scope) {
-  
+
+var app = angular.module('contactApp', []);
+
+app.controller('Contacts', ['$scope', function($scope) {
   $scope.contacts = [
     {
       name: 'adnasa',
@@ -43,6 +45,4 @@ function Contacts($scope) {
     this.editContactNumber = '';
     this.editContactWeight = null;
   }
-
-}
-
+}]);
