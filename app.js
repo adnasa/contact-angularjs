@@ -8,7 +8,9 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , emitter = require('events').EventEmitter;
+  , emitter = require('events').EventEmitter
+  , fileSystem = require('fs')
+  , inspect = require('eyes').inspector({styles: {all: 'magenta'}});
 
 
 var app = express(),
@@ -45,7 +47,16 @@ function Main() {
 
 var MainExtendables_ = {
   loadConfigurations : function() {
-    console.log('loading configs...');
+    fileSystem.readFile('config/db.json', function(error, data) {
+      if (error) {
+        // throw new Error(error);
+      }
+      else {
+        client_CONFIG = JSON.parse(data);
+        client_SET = require(client_CONFIG.client);
+        client_SET.init(app);
+      }
+    });
   }
 }
 

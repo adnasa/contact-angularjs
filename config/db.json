@@ -1,0 +1,4 @@
+{
+  "client" : "./lib/couch.js",
+  "database" : "contacts"
+}
