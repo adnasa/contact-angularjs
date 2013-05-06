@@ -25,4 +25,13 @@ This is more of a study for me to learn AngularJS for now.
 * Workflow: Now a contact is editable by default. Enforce ng-dbclick to make it editable.
 * Workflow: Add a tooltip when hovering on an editable part.
 
+---
+
+# Current state
+
+## Tag: v0.1, 7, May 2013
+
+This is my attempt to add couchDB support. I do hope that I update the package.json properly.
+There was much angularjs coding here, more like messing around with couchDB + Cradle. Like couchDB so far..
+
 ciao, baby!
