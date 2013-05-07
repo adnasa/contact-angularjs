@@ -4,8 +4,6 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
   , emitter = require('events').EventEmitter
@@ -17,6 +15,7 @@ var app = express(),
     Handler = new emitter;
 
 function Main() {
+  this.connection = false;
   app.configure(function(){
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
@@ -36,9 +35,6 @@ function Main() {
     app.use(express.errorHandler());
   });
 
-  app.get('/', routes.index);
-  app.get('/users', user.list);
-
   http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));
     Handler.emit('serverLoaded');
@@ -47,6 +43,7 @@ function Main() {
 
 var MainExtendables_ = {
   loadConfigurations : function() {
+    _that = this;
     fileSystem.readFile('config/db.json', function(error, data) {
       if (error) {
         // throw new Error(error);
@@ -54,9 +51,30 @@ var MainExtendables_ = {
       else {
         client_CONFIG = JSON.parse(data);
         client_SET = require(client_CONFIG.client);
-        client_SET.init(app);
+        _that.connection = client_SET.init(app);
+        _that.loadModules();
       }
     });
+  },
+  loadModules : function() {
+    if (this.connection) {
+      _that = this;
+      fileSystem.readFile('config/modules.json', function(err, data) {
+        if (err) {
+          inspect(err, 'There is an error');
+        }
+        else {
+          module_CONFIG = JSON.parse(data);
+          for (module in module_CONFIG) {
+            if (module_CONFIG.hasOwnProperty(module)) {
+              module_SET = require(module_CONFIG[module]);
+              console.log(module_CONFIG[module]);
+              module_SET.init(app, _that.connection, inspect);
+            }
+          }
+        }
+      });
+    }
   }
 }
 
